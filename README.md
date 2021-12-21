@@ -41,6 +41,3 @@ A basic yacth rental system written in **<font color="#a01">Java</font>**.
         <font color="#e01">As this is a demo and there is no server, there is <b>no information safety</b>. Any user can reach/manage your information with some effort.</font>
     </details>
 
-<center><h1>Under Development</h3><img width="100%" src="https://ichi.pro/assets/images/max/724/1*lhOax3cZATGZwEhG0uTYRA.gif"></img>
-</center>
-

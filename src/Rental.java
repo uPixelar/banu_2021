@@ -1,5 +1,5 @@
 public class Rental {
-	public int id;
+	public int ID;
 	public ClientCredentials customer;
 	public Yatch yatch;
 	public int startDate;
