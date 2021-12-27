@@ -1,0 +1,1 @@
+package org.ocidem.yatchrental; //Of course it is a fake domain

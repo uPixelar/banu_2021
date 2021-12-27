@@ -1,3 +1,4 @@
+package org.ocidem.yatchrental;
 public class Yatch {
 	public int ID;
 	public String model;

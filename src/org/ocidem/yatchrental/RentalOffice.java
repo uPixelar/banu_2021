@@ -1,3 +1,4 @@
+package org.ocidem.yatchrental;
 import java.util.LinkedList;
 
 public class RentalOffice {
@@ -14,6 +15,9 @@ public class RentalOffice {
 		freeYatchs = new LinkedList<Yatch>();
 		rentals = new LinkedList<Rental>();
 		reloadYatchs();
+		rentals.add(new Rental(0, new ClientCredentials("Ömer", "Berke", "5439229543"), new Yatch(0, "ab", "ab", 0, this), 0, 0));
+		rentals.add(new Rental(0, new ClientCredentials("Yetkin Bilge", "Çınar", "0000000"), new Yatch(0, "ab", "ab", 0, this), 0, 0));
+		rentals.add(new Rental(0, new ClientCredentials("Semih", "Yılmaz", "38596745"), new Yatch(0, "ab", "ab", 0, this), 0, 0));
 	}
 	
 	//Yatch management starts here yatch
@@ -34,8 +38,8 @@ public class RentalOffice {
 		if(selected == null) {
 			System.out.println("No yatch found with id: "+id);
 		}else {
-			allYatchs.remove(id);
-			freeYatchs.remove(id);
+			allYatchs.remove(selected);
+			freeYatchs.remove(selected);
 		}
 	}
 	
@@ -63,6 +67,15 @@ public class RentalOffice {
 	}
 	//Yatch management ends here
 	
+	public ClientCredentials findClient(String input) {
+		input = input.toLowerCase();
+		for(Rental rental : rentals) {
+			if(rental.customer.name.toLowerCase().contains(input)|| rental.customer.surname.toLowerCase().contains(input) || rental.customer.phoneNumber.toLowerCase().contains(input)) {
+				return rental.customer;
+			}
+		}
+		return null;
+	}
 	
 	//auto generated codes below
 	public int getId() {
