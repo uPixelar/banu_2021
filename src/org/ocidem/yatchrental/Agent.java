@@ -11,7 +11,6 @@ public class Agent {
 	}
 	
 	public void viewYatchs() {
-		LinkedList<Yatch> yatchs = YatchRental.getOffice().getAllYatchs();
 		
 	}
 	

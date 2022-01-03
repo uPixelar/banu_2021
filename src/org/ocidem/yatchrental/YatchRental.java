@@ -2,8 +2,10 @@ package org.ocidem.yatchrental;
 
 public class YatchRental {
 	private static RentalOffice rentalOffice;
+	private static Database database;
 	
 	private static void Init() {
+		//database.addEntry("Yatchs");
 		System.out.println("Which type of user are you?\n"
 				+ "1) Customer\n"
 				+ "2) Agent");
@@ -25,15 +27,18 @@ public class YatchRental {
 		return rentalOffice;
 	}
 	
+	public static Database getDatabase() {
+		return database;
+	}
+	
 	private static void Setup() {
-		rentalOffice = new RentalOffice();
+		rentalOffice = new RentalOffice(0, "Turkey", "Balıkesir");
+		database = new Database("db");
+		rentalOffice.removeYatch(3);
 	}
 	
 	public static void main(String[] args) {//entrance of app
-		String[] list = "Let's  test it  together".split("\s+");
-		for(String i:list)
-			System.out.println(i);
-		//Setup();
-		//Init();
+		Setup();
+		Init();
 	}
 }

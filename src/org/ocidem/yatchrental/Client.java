@@ -1,7 +1,6 @@
 package org.ocidem.yatchrental;
 public class Client {
 	public void viewYatchs() {
-		YatchRental.getOffice().getFreeYatchs();
 	}
 	
 	public void Init() {

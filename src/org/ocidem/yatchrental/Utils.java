@@ -3,8 +3,7 @@ import java.util.Scanner;
 
 public class Utils {
 	public static Scanner scanner = new Scanner(System.in);
-	
-	public static int getSelection(int selections) {
+	public static int getSelection(int selections) {//selections = 2
 		int fails = 0;
 		while(true) {
 			switch(fails++) {//Easter egg
@@ -34,6 +33,11 @@ public class Utils {
 		System.out.print(": ");
 		String input = scanner.nextLine();
 		return input.split("\s+");
+	}
+	
+	public static void Error(Exception e) {
+		System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+		System.exit(0);
 	}
 	
 	public void test() {
