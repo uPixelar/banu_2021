@@ -1,8 +1,10 @@
 package org.ocidem.yatchrental;
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Utils {
 	public static Scanner scanner = new Scanner(System.in);
+	
 	public static int getSelection(int selections) {//selections = 2
 		int fails = 0;
 		while(true) {
@@ -38,6 +40,14 @@ public class Utils {
 	public static void Error(Exception e) {
 		System.err.println( e.getClass().getName() + ": " + e.getMessage() );
 		System.exit(0);
+	}
+	
+	public static String formatPrice(double price) {
+		DecimalFormat df = new DecimalFormat("#");
+        df.setMaximumFractionDigits(2);
+        df.setGroupingUsed(true);
+        df.setGroupingSize(3);
+        return df.format(price);
 	}
 	
 	public void test() {

@@ -1,5 +1,7 @@
 package org.ocidem.yatchrental;
+
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 public class Database {
@@ -23,7 +25,7 @@ public class Database {
 			"id INTEGER PRIMARY KEY AUTOINCREMENT",
 			"model VARCHAR(255) NOT NULL",
 			"color VARCHAR(7) NOT NULL",
-			"price FLOAT NOT NULL",
+			"price DOUBLE NOT NULL",
 			"office INTEGER NOT NULL",
 			"isRent INTEGER DEFAULT 0"
 		});
@@ -79,7 +81,7 @@ public class Database {
 					res.getInt(1),
 					res.getString(2),
 					res.getString(3),
-					res.getFloat(4),
+					res.getDouble(4),
 					res.getInt(5),
 					res.getBoolean(6)
 				);
@@ -90,20 +92,69 @@ public class Database {
 			res.close();
 			conn.close();
 		}catch(Exception e) {Utils.Error(e);}
-		
 		return yatch;
 	}
 	
 	public void removeYatch(String col, String val) {
 		Connection conn = null;
+		String sql = String.format("DELETE FROM Yatchs WHERE %s=%s;", col, val);
 		try {
-			String sql = String.format("DELETE FROM Yatchs WHERE %s=%s;", col, val);
 			conn = DriverManager.getConnection(connURL);
 			Statement stmt = conn.createStatement();
 			stmt.executeUpdate(sql);
 			stmt.close();
 			conn.close();
 		}catch(Exception e) {Utils.Error(e);}
+	}
+	
+	public ArrayList<Yatch> getFreeYatchs() {
+		Connection conn = null;
+		String sql = String.format("SELECT * FROM Yatchs WHERE isRent=FALSE;");
+		ArrayList<Yatch> yatchs = new ArrayList<Yatch>(); 
+		try {
+			conn = DriverManager.getConnection(connURL);
+			Statement stmt = conn.createStatement();
+			ResultSet res = stmt.executeQuery(sql);
+			while(res.next()) {
+				yatchs.add(new Yatch(
+					res.getInt(1),
+					res.getString(2),
+					res.getString(3),
+					res.getDouble(4),
+					res.getInt(5),
+					res.getBoolean(6)
+				));
+			}
+			stmt.close();
+			res.close();
+			conn.close();
+		}catch(Exception e) {Utils.Error(e);}
+		return yatchs;
+	}
+	
+	public ArrayList<Yatch> getAllYatchs() {
+		Connection conn = null;
+		String sql = String.format("SELECT * FROM Yatchs;");
+		ArrayList<Yatch> yatchs = new ArrayList<Yatch>(); 
+		try {
+			conn = DriverManager.getConnection(connURL);
+			Statement stmt = conn.createStatement();
+			ResultSet res = stmt.executeQuery(sql);
+			while(res.next()) {
+				yatchs.add(new Yatch(
+					res.getInt(1),
+					res.getString(2),
+					res.getString(3),
+					res.getDouble(4),
+					res.getInt(5),
+					res.getBoolean(6)
+				));
+			}
+			stmt.close();
+			res.close();
+			conn.close();
+		}catch(Exception e) {Utils.Error(e);}
+		return yatchs;
 	}
 
 	public void createTable(String name, String[] columns) {

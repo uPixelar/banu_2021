@@ -1,5 +1,7 @@
 package org.ocidem.yatchrental;
 
+import java.text.DecimalFormat;
+
 public class YatchRental {
 	private static RentalOffice rentalOffice;
 	private static Database database;
@@ -34,7 +36,6 @@ public class YatchRental {
 	private static void Setup() {
 		rentalOffice = new RentalOffice(0, "Turkey", "Balıkesir");
 		database = new Database("db");
-		rentalOffice.removeYatch(3);
 	}
 	
 	public static void main(String[] args) {//entrance of app

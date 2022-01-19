@@ -3,11 +3,11 @@ public class Yatch {
 	public int id;
 	public String model;
 	public String color;
-	public float price;
+	public double price;
 	public int office;
 	public boolean isRent;
 	
-	public Yatch(int id, String model, String color, float price, int office, boolean isRent) {
+	public Yatch(int id, String model, String color, double price, int office, boolean isRent) {
 		super();
 		this.id = id;
 		this.model = model;

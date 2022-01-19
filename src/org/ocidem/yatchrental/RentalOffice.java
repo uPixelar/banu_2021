@@ -1,4 +1,5 @@
 package org.ocidem.yatchrental;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,7 +15,7 @@ public class RentalOffice {
 	}
 	
 	//Yatch management starts here yatch
-	public void addYatch(String model, String color, float price) {
+	public void addYatch(String model, String color, double price) {
 		Map<String, String> values = new HashMap<>();
 		values.put("model", model);
 		values.put("color", color);
@@ -34,6 +35,14 @@ public class RentalOffice {
 	
 	public Yatch getYatch(int id) {
 		return YatchRental.getDatabase().getYatch("id", String.valueOf(id));
+	}
+	
+	public ArrayList<Yatch> getFreeYatchs() {
+		return YatchRental.getDatabase().getFreeYatchs();
+	}
+	
+	public ArrayList<Yatch> getAllYatchs() {
+		return YatchRental.getDatabase().getAllYatchs();
 	}
 	//Yatch management ends here
 }
