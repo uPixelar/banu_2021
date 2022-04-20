@@ -1,4 +1,5 @@
 (DISCONTINUED)
+University project.
 # YatchRental
 A basic yacth rental system written in **<font color="#a01">Java</font>**.
 >I know it is "yacht" not "yatch" but I was too late to change when I found about. And the word yatch is better if you ask me :)
